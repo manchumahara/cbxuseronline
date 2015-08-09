@@ -147,14 +147,15 @@ class CBXOnlineWidget extends WP_Widget {
 
 		ob_start();
 
+		$instance['page'] = ($instance['page'])? $_SERVER['REQUEST_URI']: '';
+
+		$widget_string .= CBXUseronlineHelper::cbxuseronline_display($instance);
 
 
 		$widget_string .= ob_get_clean();
 		$widget_string .= $after_widget;
 
-		$instance['page'] = ($instance['page'])? $_SERVER['REQUEST_URI']: '';
 
-		echo CBXUseronlineHelper::cbxuseronline_display($instance);
 
 		$cache[ $args['widget_id'] ] = $widget_string;
 
@@ -227,6 +228,7 @@ class CBXOnlineWidget extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
+				'title'             => __( 'CBX Useronline', $this->get_widget_slug() ),
 				'count'             => 1,
 				'count_individual'  => 1,
 				'member_count'      => 1,
