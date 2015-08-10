@@ -1,0 +1,248 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CBX User Online v1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-08-10 09:54:13+0000\n"
+"Last-Translator: manchumahara <sabuj@codeboxr.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: admin/class-cbxuseronline-admin.php:120
+#@ cbxuseronline
+msgid "Refresh Time"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:121
+#@ cbxuseronline
+msgid "User visit log purge time or refresh time"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:128
+#@ cbxuseronline
+msgid "Link Username"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:129
+#@ cbxuseronline
+msgid "Link Username for Loggedin User"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:134
+#@ cbxuseronline
+msgid "Yes"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:135
+#@ cbxuseronline
+msgid "No"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:149
+#@ cbxuseronline
+msgid "Basic Settings"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:195
+#: widgets/cbxonline-widget.php:39
+#: widgets/cbxonline-widget.php:104
+#: widgets/cbxonline-widget.php:233
+#@ cbxuseronline
+msgid "CBX Useronline"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:196
+#@ cbxuseronline
+msgid "CBX Useronline Settings"
+msgstr ""
+
+#: admin/class-cbxuseronline-admin.php:222
+#@ cbxuseronline
+msgid "Settings"
+msgstr ""
+
+#: admin/partials/sidebar.php:41
+#@ cbxuseronline
+msgid "WPBoxr Other Plugins"
+msgstr ""
+
+#: admin/partials/sidebar.php:118
+#@ cbxuseronline
+msgid "Codeboxr Networks"
+msgstr ""
+
+#: admin/partials/sidebar.php:119
+#@ cbxuseronline
+msgid "Html, Wordpress & Joomla Themes"
+msgstr ""
+
+#: admin/partials/sidebar.php:122
+#@ cbxuseronline
+msgid "Wordpress Plugins"
+msgstr ""
+
+#. translators: plugin header field 'Name'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "CBX User Online"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "http://wpboxr.com/product/cbx-user-online-for-wordpress"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "This is a short description of what the plugin does. It's displayed in the WordPress admin area."
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "WPBoxr"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "http://wpboxr.com"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "1.0.0"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:325
+#, php-format
+#@ cbxuseronline
+msgid "Total %d user"
+msgid_plural "Total %d users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cbxuseronline-helper.php:332
+#, php-format
+#@ cbxuseronline
+msgid " %d member"
+msgid_plural " %d members"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cbxuseronline-helper.php:341
+#, php-format
+#@ cbxuseronline
+msgid " %d guest"
+msgid_plural " %d guests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cbxuseronline-helper.php:351
+#, php-format
+#@ cbxuseronline
+msgid " %d bot"
+msgid_plural " %d bots"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cbxuseronline-helper.php:355
+#@ cbxuseronline
+msgid " including"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:359
+#@ cbxuseronline
+msgid " online"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:361
+#@ cbxuseronline
+msgid " on this page"
+msgstr ""
+
+#: includes/class-cbxuseronlinesettings.php:354
+#@ default
+msgid "Choose File"
+msgstr ""
+
+#: public/class-cbxuseronline-public.php:97
+#@ cbxuseronline
+msgid "Admin"
+msgstr ""
+
+#: public/class-cbxuseronline-public.php:103
+#@ cbxuseronline
+msgid "Archive"
+msgstr ""
+
+#: public/class-cbxuseronline-public.php:175
+#@ cbxuseronline
+msgid "Guest"
+msgstr ""
+
+#: widgets/cbxonline-widget.php:42
+#@ cbxuseronline
+msgid "This widget shows online user stat based on the option"
+msgstr ""
+
+#: widgets/views/admin.php:6
+#@ cbxuseronline
+msgid "Title:"
+msgstr ""
+
+#: widgets/views/admin.php:13
+#@ cbxuseronline
+msgid "Show Memberlist"
+msgstr ""
+
+#: widgets/views/admin.php:15
+#@ cbxuseronline
+msgid "Show online count"
+msgstr ""
+
+#: widgets/views/admin.php:17
+#@ cbxuseronline
+msgid "Show individual count"
+msgstr ""
+
+#: widgets/views/admin.php:19
+#@ cbxuseronline
+msgid "Show member count"
+msgstr ""
+
+#: widgets/views/admin.php:21
+#@ cbxuseronline
+msgid "Show guest count"
+msgstr ""
+
+#: widgets/views/admin.php:23
+#@ cbxuseronline
+msgid "Show bot count"
+msgstr ""
+
+#: widgets/views/admin.php:25
+#@ cbxuseronline
+msgid "Show for current page"
+msgstr ""
+
+#: widgets/views/admin.php:27
+#@ cbxuseronline
+msgid "Show mobile or desktop logged in status"
+msgstr ""
+

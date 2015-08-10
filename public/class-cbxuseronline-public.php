@@ -74,22 +74,23 @@ class Cbxuseronline_Public
 		// Attributes
 		$atts =  shortcode_atts(
 				array(
-					'count'             => 1,
-					'count_individual'  => 1,
-					'member_count'      => 1,
-					'guest_count'       => 1,
-					'bot_count'         => 1,
-					'page'              => 0,
-					'mobile'            => 1
-				), $atts );
+
+					'count'             => 1, //show user count
+					'count_individual'  => 1, //show individual count as per user type  member, guest and bot
+					'member_count'      => 1, //show member user type count
+					'guest_count'       => 1, //show guest user type count
+					'bot_count'         => 1, //show bot user type count
+					'page'              => 0, //show count for this page
+					'mobile'            => 1, //show user mobile or desktop login information
+					'memberlist'        => 1, //show member list
+					'mostuseronline'    => 1 //most user online date and count
+
+				), $atts, 'cbxuseronline' );
 
 
-		$atts['page'] = ($atts['page'])? strip_tags($_SERVER['REQUEST_URI']): '';
+		$atts['page'] = ($atts['page'])? sanitize_text_field($_SERVER['REQUEST_URI']): '';
 
 		echo CBXUseronlineHelper::cbxuseronline_display($atts);
-
-
-
 	}
 
 
@@ -100,7 +101,7 @@ class Cbxuseronline_Public
 		} else {
 			$page_title = wp_title( '&raquo;', false );
 			if ( empty( $page_title ) )
-				$page_title = ' &raquo; ' . strip_tags( $_SERVER['REQUEST_URI'] );
+				$page_title = ' &raquo; ' . sanitize_text_field( $_SERVER['REQUEST_URI'] );
 			elseif ( is_singular() )
 				$page_title = ' &raquo; ' . __( 'Archive', 'cbxuseronline' ) . ' ' . $page_title;
 		}
@@ -120,7 +121,7 @@ class Cbxuseronline_Public
 		global $wpdb;
 
 		if (empty($page_url))
-			$page_url = $_SERVER['REQUEST_URI'];
+			$page_url = sanitize_text_field($_SERVER['REQUEST_URI']);
 
 		if (empty($page_title))
 			$page_title = self::get_title();

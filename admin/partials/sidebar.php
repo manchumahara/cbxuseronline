@@ -38,7 +38,7 @@
         </div>
     </div-->
 	<div class="postbox">
-		<h3><?php _e('WPBoxr Other Plugins','codeboxrflexiblecountdown'); ?></h3>
+		<h3><?php _e('WPBoxr Other Plugins','cbxuseronline'); ?></h3>
 		<div class="inside">
 			<?php
 
@@ -115,11 +115,11 @@
     </div>
 	<div class="postbox">
 		<div class="inside">
-			<h3><?php _e('Codeboxr Networks','wpfixedverticalfeedbackbutton') ?></h3>
-			<p><?php _e('Html, Wordpress & Joomla Themes','wpfixedverticalfeedbackbutton') ?></p>
+			<h3><?php _e('Codeboxr Networks','cbxuseronline') ?></h3>
+			<p><?php _e('Html, Wordpress & Joomla Themes','cbxuseronline') ?></p>
 			<a target="_blank" href="http://themeboxr.com"><img src="http://themeboxr.com/wp-content/themes/themeboxr/images/themeboxr-logo-rect.png" style="max-width: 100%;" alt="themeboxr" title="Themeboxr - useful themes"  /></a>
 			<br/>
-			<p><?php _e('Wordpress Plugins','wpfixedverticalfeedbackbutton') ?></p>
+			<p><?php _e('Wordpress Plugins','cbxuseronline') ?></p>
 			<a target="_blank" href="http://wpboxr.com"><img src="http://wpboxr.com/wp-content/themes/themeboxr/images/wpboxr-logo-rect.png" style="max-width: 100%;" alt="wpboxr" title="WPBoxr - Wordpress Extracts"  /></a>
 			<br/><br/>
 			<p>Joomla Extensions</p>

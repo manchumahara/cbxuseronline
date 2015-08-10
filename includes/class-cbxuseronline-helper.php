@@ -134,7 +134,7 @@ class CBXUseronlineHelper{
 	public static function get_referral(){
 		$referral = '';
 		if ( isset( $_SERVER['HTTP_REFERER'] ) )
-			$referral = strip_tags( $_SERVER['HTTP_REFERER'] );
+			$referral = sanitize_text_field( $_SERVER['HTTP_REFERER'] );
 		else
 			$referral = '';
 
@@ -152,7 +152,7 @@ class CBXUseronlineHelper{
 	{
 		$user_agent = '';
 		if (isset($_SERVER['HTTP_USER_AGENT']))
-			$user_agent = strip_tags($_SERVER['HTTP_USER_AGENT']);
+			$user_agent = sanitize_text_field($_SERVER['HTTP_USER_AGENT']);
 		else
 			$user_agent = '';
 
@@ -304,6 +304,8 @@ class CBXUseronlineHelper{
 
 	public static function cbxuseronline_display($atts){
 
+		//todo: find a way to translate 0, 1 and more than 1  with proper plural strings
+
 		extract( $atts, EXTR_SKIP );
 
 		$plugin_slug = 'cbxuseronline';
@@ -328,39 +330,28 @@ class CBXUseronlineHelper{
 		if($member_count && $count_individual){
 			$members = isset($userdata['users_bygroup']['user']) ? $userdata['users_bygroup']['user']: array();
 			$members_count = sizeof($members);
-			if($output_online_count_parts != '') $output_online_count_parts .= ',';
-			$output_online_count_parts .= sprintf( _n( ' %d member', ' %d members', $members_count, $plugin_slug ), $members_count );
+			if($output_online_count_parts != '' && $members_count) $output_online_count_parts .= ',';
+			$output_online_count_parts .= ($members_count) ? sprintf( _n( ' %d member', ' %d members', $members_count, $plugin_slug ), $members_count ): '';
 
-			$output_memebers .= '<ul class="cbxuseronline_memberlist cbxuseronline_memberlist_shortcode">';
-			foreach($userdata['users_bygroup']['user'] as $member){
-				$mobile_label = '';
-				if($mobile){
-					$mobile_label = '<span class="cbxuseronline_'.(($member->mobile) ? 'mobile': 'desktop').'"></span>';
-				}
-				if($linkusername){
-					$output_memebers .= '<li><a href="'.get_author_posts_url($member->userid).'">'.$member->user_name.$mobile_label.'</a></li>';
-				}
-				else{
-					$output_memebers .= '<li>'.$member->user_name.'</li>';
-				}
 
-			}
-			$output_memebers .= '</ul>';
 		}
 
 		if($guest_count && $count_individual){
 			$guest = isset($userdata['users_bygroup']['guest']) ? $userdata['users_bygroup']['guest']: array();
 			$guest_count = sizeof($guest);
-			if($output_online_count_parts != '') $output_online_count_parts .= ',';
-			$output_online_count_parts .= sprintf( _n( ' %d guest', ' %d guests', $guest_count, $plugin_slug ), $guest_count );
+			if($output_online_count_parts != '' && $guest_count) $output_online_count_parts .= ',';
+			$output_online_count_parts .= ($guest_count) ? sprintf( _n( ' %d guest', ' %d guests', $guest_count, $plugin_slug ), $guest_count ): '';
 		}
 
 
 		if($bot_count && $count_individual){
 			$bot = isset($userdata['users_bygroup']['bot']) ? $userdata['users_bygroup']['bot']: array();
 			$bot_count = sizeof($bot);
-			if($output_online_count_parts != '') $output_online_count_parts .= ',';
-			$output_online_count_parts .= sprintf( _n( ' %d bot', ' %d bots', $bot_count, $plugin_slug ), $bot_count );
+
+
+			if($output_online_count_parts != '' && ($bot_count)) $output_online_count_parts .= ',';
+			$output_online_count_parts .= ($bot_count) ? sprintf( _n( ' %d bot', ' %d bots', $bot_count, $plugin_slug ), $bot_count ): '';
+			//$output_online_count_parts .= CBXUseronlineHelper::cbxuseronline_number( _n_noop( ' %d bot', ' %d bots' ), $bot_count, $plugin_slug);
 		}
 
 		if($output_online_count_parts != '' && $count_individual) {
@@ -374,6 +365,51 @@ class CBXUseronlineHelper{
 		}
 		$output_online_count = '<p>'.$output_online_count.'</p>';
 
+
+
+		$mostuseronline_html = '';
+		if($mostuseronline){
+			$mostuser = get_option('cbxuseronline_mostonline');
+			var_dump($mostuser);
+			/*, array(
+				'count' => $cbxuseronline_mostonline_now,
+				'date' => current_time( 'timestamp' )
+			));*/
+
+			$mostuser_count = isset($mostuser['count'])? intval($mostuser['count']) : 0;
+			$mostuser_date  = isset($mostuser['date'])? intval($mostuser['date']) : 0;
+
+
+			$mostuseronline_html = '<p>'.sprintf(__('Most users ever online were %d, on %s', $plugin_slug), $mostuser_count, $mostuser_date ).'</p>';
+		}
+
+		if($memberlist && isset($userdata['users_bygroup']['user'])){
+
+			$output_memebers .= '<ul class="cbxuseronline_memberlist cbxuseronline_memberlist_shortcode">';
+
+			foreach($userdata['users_bygroup']['user'] as $member){
+				$mobile_label = '';
+				if($mobile){
+					$mobile_label = '<span class="cbxuseronline_'.(($member->mobile) ? 'mobile': 'desktop').'"></span>';
+				}
+				if($linkusername){
+					$output_memebers .= apply_filters('cbxuseronline_memberitem','<li><a href="'.get_author_posts_url($member->userid).'">'.$member->user_name.$mobile_label.'</a></li>');
+				}
+				else{
+					$output_memebers .= apply_filters('cbxuseronline_memberitem','<li>'.$member->user_name.'</li>');
+				}
+
+			}
+			$output_memebers .= '</ul>';
+		}
+
+
+
 		return 	'<div class="cbxuseronline cbxuseronline_shortcode">'.$output_online_count.$output_memebers.'</div>';
+	}
+
+	public  static function cbxuseronline_number( $nooped_plural, $count, $text_domain ) {
+
+		return printf( translate_nooped_plural( $nooped_plural, $count, $text_domain ), $count );
 	}
 }

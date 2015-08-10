@@ -119,13 +119,15 @@ class CBXOnlineWidget extends WP_Widget {
 		$mobile              = isset($instance['mobile'])        ? intval( $instance['mobile'] ): 1;
 		*/
 		$fields = array(
-			'count'             => 1,
-			'count_individual'  => 1,
-			'member_count'      => 1,
-			'guest_count'       => 1,
-			'bot_count'         => 1,
-			'page'              => 0,
-			'mobile'            => 1
+			'count'             => 1, //show user count
+			'count_individual'  => 1, //show individual count as per user type  member, guest and bot
+			'member_count'      => 1, //show member user type count
+			'guest_count'       => 1, //show guest user type count
+			'bot_count'         => 1, //show bot user type count
+			'page'              => 0, //show count for this page
+			'mobile'            => 1, //show user mobile or desktop login information
+			'memberlist'        => 1, //show member list
+			'mostuseronline'    => 1 //most user online date and count
 		);
 
 		foreach($fields as $field => $val){
@@ -181,13 +183,15 @@ class CBXOnlineWidget extends WP_Widget {
 		$instance = $old_instance;
 
 		$fields = array(
-			'count'             => 1,
-			'count_individual'  => 1,
-			'member_count'      => 1,
-			'guest_count'       => 1,
-			'bot_count'         => 1,
-			'page'              => 0,
-			'mobile'            => 1
+			'count'             => 1, //show user count
+			'count_individual'  => 1, //show individual count as per user type  member, guest and bot
+			'member_count'      => 1, //show member user type count
+			'guest_count'       => 1, //show guest user type count
+			'bot_count'         => 1, //show bot user type count
+			'page'              => 0, //show count for this page
+			'mobile'            => 1, //show user mobile or desktop login information
+			'memberlist'        => 1, //show member list
+			'mostuseronline'    => 1 //most user online date and count
 		);
 
 		$instance['title']              = esc_attr( $new_instance['title'] );
@@ -229,13 +233,15 @@ class CBXOnlineWidget extends WP_Widget {
 			(array) $instance,
 			array(
 				'title'             => __( 'CBX Useronline', $this->get_widget_slug() ),
-				'count'             => 1,
-				'count_individual'  => 1,
-				'member_count'      => 1,
-				'guest_count'       => 1,
-				'bot_count'         => 1,
-				'page'              => 0,
-				'mobile'            => 1
+				'count'             => 1, //show user count
+				'count_individual'  => 1, //show individual count as per user type  member, guest and bot
+				'member_count'      => 1, //show member user type count
+				'guest_count'       => 1, //show guest user type count
+				'bot_count'         => 1, //show bot user type count
+				'page'              => 0, //show count for this page
+				'mobile'            => 1, //show user mobile or desktop login information
+				'memberlist'        => 1, //show member list
+				'mostuseronline'    => 1 //most user online date and count
 			)
 		);
 
