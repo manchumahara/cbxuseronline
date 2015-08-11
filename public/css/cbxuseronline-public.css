@@ -9,7 +9,7 @@
 
 }
 .cbxuseronline_shortcode{
-
+    padding: 10px;
 }
 .cbxuseronline_desktop{
     width: 16px; height: 16px; background: url('../images/desktop-icon.png') left top no-repeat;
@@ -21,3 +21,4 @@
     display: inline-block;
     margin-left: 5px;
 }
+

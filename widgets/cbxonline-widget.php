@@ -109,15 +109,12 @@ class CBXOnlineWidget extends WP_Widget {
 		else{
 			$widget_string .= $args['before_title'] .  $args['after_title'];
 		}
-		/*
-		$count               = !empty($instance['count']) ? intval( $instance['count'] )  : 1;
-		$count_individual    = isset($instance['count_individual'])     ? intval( $instance['count_individual'] )  : 1;
-		$member_count        = isset($instance['member_count'])         ? esc_attr( $instance['member_count'] ): 1;
-		$guest_count         = isset($instance['guest_count'])        ? esc_attr( $instance['guest_count'] ) : 1;
-		$bot_count           = isset($instance['bot_count'])     ? esc_attr( $instance['bot_count'] ): 1;
-		$page                = isset($instance['page'])        ? intval( $instance['page'] ): 1;
-		$mobile              = isset($instance['mobile'])        ? intval( $instance['mobile'] ): 1;
-		*/
+
+
+		ob_start();
+
+
+
 		$fields = array(
 			'count'             => 1, //show user count
 			'count_individual'  => 1, //show individual count as per user type  member, guest and bot
@@ -142,21 +139,19 @@ class CBXOnlineWidget extends WP_Widget {
 
 		}
 
-/*
-		echo '<pre>';
-		print_r($instance);
-		echo '</pre>';*/
 
-		ob_start();
+
+
 
 		$instance['page'] = ($instance['page'])? $_SERVER['REQUEST_URI']: '';
 
-		$widget_string .= CBXUseronlineHelper::cbxuseronline_display($instance);
+		echo  CBXUseronlineHelper::cbxuseronline_display($instance);
+
 
 
 		$widget_string .= ob_get_clean();
-		$widget_string .= $after_widget;
 
+		$widget_string .= $after_widget;
 
 
 		$cache[ $args['widget_id'] ] = $widget_string;
