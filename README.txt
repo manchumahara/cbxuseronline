@@ -35,6 +35,24 @@ Upcoming feature:
 *   Create admin page to show current online user's total list for admin only
 *   Integrate this plugin with other plugins where possible
 
+
+Shortcode Details:
+
+[cbxuseronline]
+
+for other params
+
+count             default value 1 //show user count
+count_individual  default value 1 //show individual count as per user type  member, guest and bot
+member_count      default value 1 //show member user type count
+guest_count       default value 1 //show guest user type count
+bot_count         default 1  //show bot user type count
+page              default 0 //show count for this page
+mobile            default 1 //show user mobile or desktop login information
+memberlist        default 1 //show member list
+mostuseronline    default 1 //most user online date and count
+
+
 == Installation ==
 
 How to install the plugin and get it working.
