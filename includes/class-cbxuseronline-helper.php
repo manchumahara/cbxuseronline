@@ -370,7 +370,7 @@ class CBXUseronlineHelper{
 		$mostuseronline_html = '';
 		if($mostuseronline){
 			$mostuser = get_option('cbxuseronline_mostonline');
-			var_dump($mostuser);
+			//var_dump($mostuser);
 			/*, array(
 				'count' => $cbxuseronline_mostonline_now,
 				'date' => current_time( 'timestamp' )
@@ -379,6 +379,14 @@ class CBXUseronlineHelper{
 			$mostuser_count = isset($mostuser['count'])? intval($mostuser['count']) : 0;
 			$mostuser_date  = isset($mostuser['date'])? intval($mostuser['date']) : 0;
 
+			$mysql_date = false;
+
+			if ( $mysql_date ){
+				$mostuser_date = mysql2date( sprintf( __( '%s @ %s', $plugin_slug ), get_option( 'date_format' ), get_option( 'time_format' ) ), $mostuser_date, true );
+			}
+			else{
+				$mostuser_date = date_i18n( sprintf( __( '%s @ %s', $plugin_slug), get_option( 'date_format' ), get_option( 'time_format' ) ), $mostuser_date );
+			}
 
 			$mostuseronline_html = '<p>'.sprintf(__('Most users ever online were %d, on %s', $plugin_slug), $mostuser_count, $mostuser_date ).'</p>';
 		}
@@ -405,7 +413,7 @@ class CBXUseronlineHelper{
 
 
 
-		return 	'<div class="cbxuseronline cbxuseronline_shortcode">'.$output_online_count.$output_memebers.'</div>';
+		return 	'<div class="cbxuseronline cbxuseronline_shortcode">'.$output_online_count.$mostuseronline_html.$output_memebers.'</div>';
 	}
 
 	public  static function cbxuseronline_number( $nooped_plural, $count, $text_domain ) {
