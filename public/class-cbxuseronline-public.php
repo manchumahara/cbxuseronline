@@ -83,14 +83,16 @@ class Cbxuseronline_Public
 					'page'              => 0, //show count for this page
 					'mobile'            => 1, //show user mobile or desktop login information
 					'memberlist'        => 1, //show member list
-					'mostuseronline'    => 1 //most user online date and count
+					'mostuseronline'    => 1, //most user online date and count,
+					'linkusername'		=> 1 //link member
 
 				), $atts, 'cbxuseronline' );
 
 
 		$atts['page'] = ($atts['page'])? sanitize_text_field($_SERVER['REQUEST_URI']): '';
+		$scope = "shortcode";
 
-		echo CBXUseronlineHelper::cbxuseronline_display($atts);
+		echo CBXUseronlineHelper::cbxuseronline_display($atts, $scope);
 	}
 
 

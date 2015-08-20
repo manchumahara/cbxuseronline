@@ -16,7 +16,7 @@
  * Plugin Name:       CBX User Online
  * Plugin URI:        http://wpboxr.com/product/cbx-user-online-for-wordpress
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            WPBoxr
  * Author URI:        http://wpboxr.com
  * License:           GPL-2.0+

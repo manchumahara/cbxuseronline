@@ -3,8 +3,8 @@ Contributors: manchumahara, codeboxr, wpboxr
 Donate link: http://wpboxr.com
 Tags: woocommerce, woocommerce order
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 2.0.0
+Tested up to: 4.2.4
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,14 +27,7 @@ Features:
 
 See more details and usages guide here http://wpboxr.com/product/cbx-user-online-for-wordpress
 
-Upcoming feature:
-
-*   Auto refresh statistics using ajax
-*   Admin dashboard widget
-*   Show online count in dashboard widget "Right Now"
-*   Create admin page to show current online user's total list for admin only
-*   Integrate this plugin with other plugins where possible
-
+[youtube http://www.youtube.com/watch?v=70qaxOFCRN4]
 
 Shortcode Details:
 
@@ -51,6 +44,25 @@ page              default 0 //show count for this page
 mobile            default 1 //show user mobile or desktop login information
 memberlist        default 1 //show member list
 mostuseronline    default 1 //most user online date and count
+linkusername      default 1 //link user to author page
+
+
+Pro Features:
+Note: free version will be always free but we released pro version with some more extra features.
+
+* Dashboard widgets
+* Dashboard details online user page
+* Pro version enables some extra features in shortcode params and widget setting
+* Dashboard widgets custom setting
+* Admin detals page custom setting
+
+'[cbxuseronline]' shortcode extra params:
+
+ avatarlist  default 0   shows as regular list , 1 shows avatar list
+ avatarsize  default 50  avatar size
+ grid        default 0  shows the list as grid list
+ hidename    default 0  hides User display name , good for avatar listing
+
 
 
 == Installation ==
@@ -82,6 +94,10 @@ Cookie name is "cbxuseronline-cookie", value is created dynamically
 3. Shortcode frontend
 
 == Changelog ==
+= 1.0.1 =
+* Added translation
+* Few bug fix, code improvement and more extensible code
+* Premium addon release with more features
 
 = 1.0.0 =
 * First Release

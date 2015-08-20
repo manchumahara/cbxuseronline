@@ -5,10 +5,18 @@
 
 }
 
+.cbxuseronline_memberlist_widget{
+
+}
+
 .cbxuseronline{
 
 }
 .cbxuseronline_shortcode{
+    padding: 10px;
+}
+
+.cbxuseronline_widget{
     padding: 10px;
 }
 .cbxuseronline_desktop{

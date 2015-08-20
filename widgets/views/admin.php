@@ -11,6 +11,9 @@
 <p>
 	<input class="checkbox" type="checkbox" <?php checked($memberlist, true) ?> id="<?php echo $this->get_field_id('memberlist'); ?>" name="<?php echo $this->get_field_name('memberlist'); ?>" />
 	<label for="<?php echo $this->get_field_id('memberlist'); ?>"><?php _e('Show Memberlist', $this->get_widget_slug()); ?></label><br />
+	<input class="checkbox" type="checkbox" <?php checked($linkusername, true) ?> id="<?php echo $this->get_field_id('linkusername'); ?>" name="<?php echo $this->get_field_name('linkusername'); ?>" />
+	<label for="<?php echo $this->get_field_id('linkusername'); ?>"><?php _e('Link user to author page', $this->get_widget_slug()); ?></label><br />
+
 	<input class="checkbox" type="checkbox" <?php checked($count, true) ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" />
 	<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show online count', $this->get_widget_slug()); ?></label><br />
 	<input class="checkbox" type="checkbox" <?php checked($count_individual, true) ?> id="<?php echo $this->get_field_id('count_individual'); ?>" name="<?php echo $this->get_field_name('count_individual'); ?>" />
@@ -28,3 +31,6 @@
 	<input class="checkbox" type="checkbox" <?php checked($mobile, true) ?> id="<?php echo $this->get_field_id('mobile'); ?>" name="<?php echo $this->get_field_name('mobile'); ?>" />
 	<label for="<?php echo $this->get_field_id('mobile'); ?>"><?php _e('Show mobile or desktop logged in status', $this->get_widget_slug()); ?></label><br />
 </p>
+<?php
+do_action('cbxuseronline_widget_form_admin', $instance, $this)
+?>

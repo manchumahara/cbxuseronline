@@ -116,15 +116,14 @@
 	<div class="postbox">
 		<div class="inside">
 			<h3><?php _e('Codeboxr Networks','cbxuseronline') ?></h3>
-			<p><?php _e('Html, Wordpress & Joomla Themes','cbxuseronline') ?></p>
-			<a target="_blank" href="http://themeboxr.com"><img src="http://themeboxr.com/wp-content/themes/themeboxr/images/themeboxr-logo-rect.png" style="max-width: 100%;" alt="themeboxr" title="Themeboxr - useful themes"  /></a>
-			<br/>
 			<p><?php _e('Wordpress Plugins','cbxuseronline') ?></p>
 			<a target="_blank" href="http://wpboxr.com"><img src="http://wpboxr.com/wp-content/themes/themeboxr/images/wpboxr-logo-rect.png" style="max-width: 100%;" alt="wpboxr" title="WPBoxr - Wordpress Extracts"  /></a>
 			<br/><br/>
+			<p><?php _e('Html, Wordpress & Joomla Themes','cbxuseronline') ?></p>
+			<a target="_blank" href="http://themeboxr.com"><img src="http://themeboxr.com/wp-content/themes/themeboxr/images/themeboxr-logo-rect.png" style="max-width: 100%;" alt="themeboxr" title="Themeboxr - useful themes"  /></a>
+			<br/>
 			<p>Joomla Extensions</p>
 			<a target="_blank" href="http://joomboxr.com"><img src="http://joomboxr.com/wp-content/themes/themeboxr/images/joomboxr-logo-rect.png" style="max-width: 100%;" alt="joomboxr" title="Joomboxr - Joomla Extracts"  /></a>
-
 		</div>
 	</div>
 

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: CBX User Online v1.0.0\n"
+"Project-Id-Version: CBX User Online v1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-08-11 06:47:06+0000\n"
+"PO-Revision-Date: 2015-08-20 06:00:11+0000\n"
 "Last-Translator: manchumahara <sabuj@codeboxr.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,26 +30,6 @@ msgstr ""
 msgid "User visit log purge time or refresh time"
 msgstr ""
 
-#: admin/class-cbxuseronline-admin.php:128
-#@ cbxuseronline
-msgid "Link Username"
-msgstr ""
-
-#: admin/class-cbxuseronline-admin.php:129
-#@ cbxuseronline
-msgid "Link Username for Loggedin User"
-msgstr ""
-
-#: admin/class-cbxuseronline-admin.php:134
-#@ cbxuseronline
-msgid "Yes"
-msgstr ""
-
-#: admin/class-cbxuseronline-admin.php:135
-#@ cbxuseronline
-msgid "No"
-msgstr ""
-
 #: admin/class-cbxuseronline-admin.php:149
 #@ cbxuseronline
 msgid "Basic Settings"
@@ -58,7 +38,7 @@ msgstr ""
 #: admin/class-cbxuseronline-admin.php:195
 #: widgets/cbxonline-widget.php:39
 #: widgets/cbxonline-widget.php:104
-#: widgets/cbxonline-widget.php:235
+#: widgets/cbxonline-widget.php:237
 #@ cbxuseronline
 msgid "CBX Useronline"
 msgstr ""
@@ -83,12 +63,12 @@ msgstr ""
 msgid "Codeboxr Networks"
 msgstr ""
 
-#: admin/partials/sidebar.php:119
+#: admin/partials/sidebar.php:122
 #@ cbxuseronline
 msgid "Html, Wordpress & Joomla Themes"
 msgstr ""
 
-#: admin/partials/sidebar.php:122
+#: admin/partials/sidebar.php:119
 #@ cbxuseronline
 msgid "Wordpress Plugins"
 msgstr ""
@@ -123,55 +103,17 @@ msgstr ""
 msgid "http://wpboxr.com"
 msgstr ""
 
-#. translators: plugin header field 'Version'
-#: cbxuseronline.php:0
-#@ cbxuseronline
-msgid "1.0.0"
-msgstr ""
-
-#: includes/class-cbxuseronline-helper.php:327
-#, php-format
-#@ cbxuseronline
-msgid "Total %d user"
-msgid_plural "Total %d users"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-cbxuseronline-helper.php:334
-#, php-format
-#@ cbxuseronline
-msgid " %d member"
-msgid_plural " %d members"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-cbxuseronline-helper.php:343
-#, php-format
-#@ cbxuseronline
-msgid " %d guest"
-msgid_plural " %d guests"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-cbxuseronline-helper.php:353
-#, php-format
-#@ cbxuseronline
-msgid " %d bot"
-msgid_plural " %d bots"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-cbxuseronline-helper.php:358
+#: includes/class-cbxuseronline-helper.php:371
 #@ cbxuseronline
 msgid " including"
 msgstr ""
 
-#: includes/class-cbxuseronline-helper.php:362
+#: includes/class-cbxuseronline-helper.php:375
 #@ cbxuseronline
 msgid " online"
 msgstr ""
 
-#: includes/class-cbxuseronline-helper.php:364
+#: includes/class-cbxuseronline-helper.php:377
 #@ cbxuseronline
 msgid " on this page"
 msgstr ""
@@ -181,17 +123,17 @@ msgstr ""
 msgid "Choose File"
 msgstr ""
 
-#: public/class-cbxuseronline-public.php:100
+#: public/class-cbxuseronline-public.php:102
 #@ cbxuseronline
 msgid "Admin"
 msgstr ""
 
-#: public/class-cbxuseronline-public.php:106
+#: public/class-cbxuseronline-public.php:108
 #@ cbxuseronline
 msgid "Archive"
 msgstr ""
 
-#: public/class-cbxuseronline-public.php:178
+#: public/class-cbxuseronline-public.php:180
 #@ cbxuseronline
 msgid "Guest"
 msgstr ""
@@ -211,56 +153,146 @@ msgstr ""
 msgid "Show Memberlist"
 msgstr ""
 
-#: widgets/views/admin.php:15
+#: widgets/views/admin.php:18
 #@ cbxuseronline
 msgid "Show online count"
 msgstr ""
 
-#: widgets/views/admin.php:17
+#: widgets/views/admin.php:20
 #@ cbxuseronline
 msgid "Show individual count"
 msgstr ""
 
-#: widgets/views/admin.php:19
+#: widgets/views/admin.php:22
 #@ cbxuseronline
 msgid "Show member count"
 msgstr ""
 
-#: widgets/views/admin.php:21
+#: widgets/views/admin.php:24
 #@ cbxuseronline
 msgid "Show guest count"
 msgstr ""
 
-#: widgets/views/admin.php:23
+#: widgets/views/admin.php:26
 #@ cbxuseronline
 msgid "Show bot count"
 msgstr ""
 
-#: widgets/views/admin.php:25
+#: widgets/views/admin.php:28
 #@ cbxuseronline
 msgid "Show for current page"
 msgstr ""
 
-#: widgets/views/admin.php:29
+#: widgets/views/admin.php:32
 #@ cbxuseronline
 msgid "Show mobile or desktop logged in status"
 msgstr ""
 
-#: includes/class-cbxuseronline-helper.php:385
-#: includes/class-cbxuseronline-helper.php:388
+#: includes/class-cbxuseronline-helper.php:398
+#: includes/class-cbxuseronline-helper.php:401
+#: includes/class-cbxuseronline-helper.php:442
+#: includes/class-cbxuseronline-helper.php:445
+#: includes/class-cbxuseronline-helper.php:464
+#: includes/class-cbxuseronline-helper.php:467
 #, php-format
 #@ cbxuseronline
 msgid "%s @ %s"
 msgstr ""
 
-#: includes/class-cbxuseronline-helper.php:391
-#, php-format
-#@ cbxuseronline
-msgid "Most users ever online were %d, on %s"
-msgstr ""
-
-#: widgets/views/admin.php:27
+#: widgets/views/admin.php:30
 #@ cbxuseronline
 msgid "Show most user online"
+msgstr ""
+
+#: admin/partials/cbxuseronline-admin-display.php:21
+#@ cbxuseronline
+msgid "Grab the Pro Version"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: cbxuseronline.php:0
+#@ cbxuseronline
+msgid "1.0.1"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:338
+#@ cbxuseronline
+msgid "Total <strong>%</strong> users"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:338
+#@ cbxuseronline
+msgid "Total <strong>%</strong> user"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:346
+#@ cbxuseronline
+msgid " <strong>%</strong> members"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:346
+#@ cbxuseronline
+msgid " <strong>%</strong> member"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:356
+#@ cbxuseronline
+msgid " <strong>%</strong> guests"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:356
+#@ cbxuseronline
+msgid " <strong>%</strong> guest"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:367
+#@ cbxuseronline
+msgid " <strong>%</strong> bots"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:367
+#@ cbxuseronline
+msgid " <strong>%</strong> bot"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:404
+#, php-format
+#@ cbxuseronline
+msgid "Most users ever online were <strong>%d</strong>, on %s"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:448
+#: includes/class-cbxuseronline-helper.php:470
+#@ cbxuseronline
+msgid "User ID: "
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:449
+#: includes/class-cbxuseronline-helper.php:471
+#@ cbxuseronline
+msgid "IP Address: "
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:450
+#: includes/class-cbxuseronline-helper.php:472
+#@ cbxuseronline
+msgid "User Agent: "
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:451
+#: includes/class-cbxuseronline-helper.php:473
+#@ cbxuseronline
+msgid "URL"
+msgstr ""
+
+#: includes/class-cbxuseronline-helper.php:451
+#: includes/class-cbxuseronline-helper.php:473
+#@ cbxuseronline
+msgid "Referral"
+msgstr ""
+
+#: widgets/views/admin.php:15
+#@ cbxuseronline
+msgid "Link user to author page"
 msgstr ""
 

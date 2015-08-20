@@ -122,8 +122,8 @@ class Cbxuseronline_Admin {
 					'type'              => 'number',
 					'default'           => '3600',
 					'sanitize_callback' => 'intval'
-				),
-				array(
+				)
+				/*array(
 					'name'              => 'linkusername',
 					'label'             => __( 'Link Username', $plugin_slug ),
 					'desc'              => __( 'Link Username for Loggedin User', $plugin_slug ),
@@ -134,7 +134,7 @@ class Cbxuseronline_Admin {
 						'1' => __('Yes', $plugin_slug),
 						'0'  => __('No',$plugin_slug)
 					)
-				)
+				)*/
 			)
 		);
 

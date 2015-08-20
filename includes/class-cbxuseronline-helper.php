@@ -13,6 +13,8 @@
  * @subpackage Cbxuseronline/includes
  */
 
+
+
 /**
  * The helper plugin class.
  *
@@ -302,7 +304,11 @@ class CBXUseronlineHelper{
 
 	}
 
-	public static function cbxuseronline_display($atts){
+	public static function cbxuseronline_display($atts, $scope="shortcode"){
+
+		/*echo '<pre>';
+		print_r($atts);
+		echo '</pre>';*/
 
 		//todo: find a way to translate 0, 1 and more than 1  with proper plural strings
 
@@ -310,11 +316,14 @@ class CBXUseronlineHelper{
 
 		$plugin_slug = 'cbxuseronline';
 
+		//var_dump($page);
+
 		$userdata = CBXUseronlineHelper::user_online($page);
 
 
-		$cbxuseronline_basics = get_option('cbxuseronline_basics');
-		$linkusername = isset($cbxuseronline_basics['linkusername']) ? intval($cbxuseronline_basics['linkusername']) : 1;
+		//$cbxuseronline_basics = get_option('cbxuseronline_basics');
+
+		//$linkusername = isset($atts['linkusername']) ? intval($atts['linkusername']) : 1;
 
 		//$output = '';
 		$output_memebers = '';
@@ -324,34 +333,54 @@ class CBXUseronlineHelper{
 		//usercount
 		if($count){
 			$user_count = isset($userdata['count']) ? intval($userdata['count']): 0;
-			$output_online_count .= ''.sprintf( _n( 'Total %d user', 'Total %d users', $user_count, $plugin_slug ), $user_count ).'';
+
+			//$output_online_count .= ''.sprintf( _n( 'Total <strong>%d</strong> user', 'Total <strong>%d</strong> users', $user_count, $plugin_slug ), $user_count ).'';
+			$output_online_count .= CBXUseronlineHelper::get_correct_plugral_text($user_count, __( 'Total <strong>%</strong> users', $plugin_slug ), __( 'Total <strong>%</strong> user', $plugin_slug ));
 		}
+
 
 		if($member_count && $count_individual){
 			$members = isset($userdata['users_bygroup']['user']) ? $userdata['users_bygroup']['user']: array();
 			$members_count = sizeof($members);
-			if($output_online_count_parts != '' && $members_count) $output_online_count_parts .= ',';
-			$output_online_count_parts .= ($members_count) ? sprintf( _n( ' %d member', ' %d members', $members_count, $plugin_slug ), $members_count ): '';
+
+			if($output_online_count_parts != '' && $member_count == 1) {
+				//var_dump($output_online_count_parts);
+				$output_online_count_parts .= ',';
+				//var_dump($output_online_count_parts);
+			}
+
+
+			//$output_online_count_parts .= ($members_count) ? sprintf( _n( ' <strong>%d</strong> member', ' <strong>%d</strong> members', $members_count, $plugin_slug ), $members_count ): '';
+			$output_online_count_parts .= CBXUseronlineHelper::get_correct_plugral_text($members_count, __(' <strong>%</strong> members', $plugin_slug), __(' <strong>%</strong> member', $plugin_slug));
 
 
 		}
 
+		//var_dump($count_individual);
+		//var_dump($guest_count);
+
 		if($guest_count && $count_individual){
 			$guest = isset($userdata['users_bygroup']['guest']) ? $userdata['users_bygroup']['guest']: array();
-			$guest_count = sizeof($guest);
-			if($output_online_count_parts != '' && $guest_count) $output_online_count_parts .= ',';
-			$output_online_count_parts .= ($guest_count) ? sprintf( _n( ' %d guest', ' %d guests', $guest_count, $plugin_slug ), $guest_count ): '';
+			$guests_count = sizeof($guest);
+			if($output_online_count_parts != '' && $guest_count) {
+				//var_dump($output_online_count_parts);
+				$output_online_count_parts .= ',';
+				//var_dump($output_online_count_parts);
+			}
+
+			//$output_online_count_parts .= ($guest_count) ? sprintf( _n( ' <strong>%d</strong> guest', ' <strong>%d</strong> guests', $guest_count, $plugin_slug ), $guest_count ): '';
+			$output_online_count_parts .= CBXUseronlineHelper::get_correct_plugral_text($guests_count, __(' <strong>%</strong> guests',$plugin_slug), __(' <strong>%</strong> guest', $plugin_slug));
 		}
 
 
 		if($bot_count && $count_individual){
 			$bot = isset($userdata['users_bygroup']['bot']) ? $userdata['users_bygroup']['bot']: array();
-			$bot_count = sizeof($bot);
+			$bots_count = sizeof($bot);
 
 
 			if($output_online_count_parts != '' && ($bot_count)) $output_online_count_parts .= ',';
-			$output_online_count_parts .= ($bot_count) ? sprintf( _n( ' %d bot', ' %d bots', $bot_count, $plugin_slug ), $bot_count ): '';
-			//$output_online_count_parts .= CBXUseronlineHelper::cbxuseronline_number( _n_noop( ' %d bot', ' %d bots' ), $bot_count, $plugin_slug);
+			//$output_online_count_parts .= ($bot_count) ? sprintf( _n( ' <strong>%d</strong> bot', ' <strong>%d</strong> bots', $bot_count, $plugin_slug ), $bot_count ): '';
+			$output_online_count_parts .= CBXUseronlineHelper::get_correct_plugral_text( $bots_count, __(' <strong>%</strong> bots', $plugin_slug), __(' <strong>%</strong> bot', $plugin_slug));
 		}
 
 		if($output_online_count_parts != '' && $count_individual) {
@@ -388,23 +417,82 @@ class CBXUseronlineHelper{
 				$mostuser_date = date_i18n( sprintf( __( '%s @ %s', $plugin_slug), get_option( 'date_format' ), get_option( 'time_format' ) ), $mostuser_date );
 			}
 
-			$mostuseronline_html = '<p>'.sprintf(__('Most users ever online were %d, on %s', $plugin_slug), $mostuser_count, $mostuser_date ).'</p>';
+			$mostuseronline_html = '<p>'.sprintf(__('Most users ever online were <strong>%d</strong>, on %s', $plugin_slug), $mostuser_count, $mostuser_date ).'</p>';
 		}
 
 		if($memberlist && isset($userdata['users_bygroup']['user'])){
 
-			$output_memebers .= '<ul class="cbxuseronline_memberlist cbxuseronline_memberlist_shortcode">';
+			$output_memebers .= '<ul class="cbxuseronline_memberlist cbxuseronline_memberlist_'.$scope.'">';
 
 			foreach($userdata['users_bygroup']['user'] as $member){
+
+				/*echo '<pre>';
+				print_r($member);
+				echo '</pre>';*/
+
 				$mobile_label = '';
+				$mobile_label_class= '';
+
 				if($mobile){
-					$mobile_label = '<span class="cbxuseronline_'.(($member->mobile) ? 'mobile': 'desktop').'"></span>';
+					$mobile_label = '<span class="cbxuseronline_'.(($member->mobile) ? 'mobile': 'desktop').' '.apply_filters('mobile_label_class', $mobile_label_class, $atts).'"></span>';
 				}
+
+				$memberlist_css_class = 'cbxuseronline_memberlist_item';
+				$memberlist_css_class = apply_filters('memberlist_css_class', $memberlist_css_class, $atts );
+
+				$member_name = apply_filters('cbxuseronline_memberitemname',$member->user_name, $atts);
+
+				//var_dump($linkusername);
+
 				if($linkusername){
-					$output_memebers .= apply_filters('cbxuseronline_memberitem','<li><a href="'.get_author_posts_url($member->userid).'">'.$member->user_name.$mobile_label.'</a></li>');
+					$output_memebers .= '<li class="'.$memberlist_css_class.'"><a title="'.$member->user_name.'" href="'.get_author_posts_url($member->userid).'">';
+						$item_label =  $member_name.$mobile_label;
+						$output_memebers .= apply_filters('cbxuseronline_memberitemhtml',$item_label, $member->userid, $atts);
+
+
+					$output_memebers .= '</a>';
+
+					if(isset($atts['details']) && $atts['details'] ){
+						$member_lastlogin_time = '';
+						if ( $mysql_date ){
+							$member_lastlogin_time = mysql2date( sprintf( __( '%s @ %s', $plugin_slug ), get_option( 'date_format' ), get_option( 'time_format' ) ), $member->timestamp, true );
+						}
+						else{
+							$member_lastlogin_time = date_i18n( sprintf( __( '%s @ %s', $plugin_slug), get_option( 'date_format' ), get_option( 'time_format' ) ), $member->timestamp );
+						}
+
+						$output_memebers .= '<p>'.__('User ID: ',$plugin_slug).$member->userid.'</p>';
+						$output_memebers .= '<p>'.__('IP Address: ',$plugin_slug).$member->user_ip.'</p>';
+						$output_memebers .= '<p>'.__('User Agent: ',$plugin_slug).$member->user_agent.'</p>';
+						$output_memebers .= '<p><a target="_blank" href="'.$member->page_url.'">'.__('URL',$plugin_slug).'</a> <a target="_blank" href="'.$member->referral.'">'.__('Referral',$plugin_slug).'</a></p>';
+
+					}
+
+					$output_memebers .= '</li>';
 				}
 				else{
-					$output_memebers .= apply_filters('cbxuseronline_memberitem','<li>'.$member->user_name.'</li>');
+					$output_memebers .= '<li class="'.$memberlist_css_class.'">';
+						$item_label =  $member_name;
+						$output_memebers .= apply_filters('cbxuseronline_memberitemhtml', $item_label, $member->userid, $atts);
+						//var_dump($atts['details']);
+
+						if(isset($atts['details']) && $atts['details'] ){
+							$member_lastlogin_time = '';
+							if ( $mysql_date ){
+								$member_lastlogin_time = mysql2date( sprintf( __( '%s @ %s', $plugin_slug ), get_option( 'date_format' ), get_option( 'time_format' ) ), $member->timestamp, true );
+							}
+							else{
+								$member_lastlogin_time = date_i18n( sprintf( __( '%s @ %s', $plugin_slug), get_option( 'date_format' ), get_option( 'time_format' ) ), $member->timestamp );
+							}
+
+							$output_memebers .= '<p>'.__('User ID: ',$plugin_slug).$member->userid.'</p>';
+							$output_memebers .= '<p>'.__('IP Address: ',$plugin_slug).$member->user_ip.'</p>';
+							$output_memebers .= '<p>'.__('User Agent: ',$plugin_slug).$member->user_agent.'</p>';
+							$output_memebers .= '<p><a target="_blank" href="'.$member->page_url.'">'.__('URL',$plugin_slug).'</a> <a target="_blank" href="'.$member->referral.'">'.__('Referral',$plugin_slug).'</a></p>';
+
+						}
+
+					$output_memebers .= '</li>';
 				}
 
 			}
@@ -413,11 +501,37 @@ class CBXUseronlineHelper{
 
 
 
-		return 	'<div class="cbxuseronline cbxuseronline_shortcode">'.$output_online_count.$mostuseronline_html.$output_memebers.'</div>';
+		return 	'<div class="cbxuseronline cbxuseronline_'.$scope.'">'.$output_online_count.$mostuseronline_html.$output_memebers.'</div>';
 	}
 
 	public  static function cbxuseronline_number( $nooped_plural, $count, $text_domain ) {
 
 		return printf( translate_nooped_plural( $nooped_plural, $count, $text_domain ), $count );
 	}
+
+
+	/**
+	 * Displays the plural strings if value is more than 1, unless singular
+	 *
+	 * @param $number interger
+	 * @param $plural  string
+	 * @param $singular string
+	 *
+	 * @return string
+	 */
+	function get_correct_plugral_text( $number, $plural, $singular ) {
+
+
+		if ( $number > 1 ) {
+			$output = str_replace( '%', number_format_i18n( $number ), $plural );
+		}
+		else {
+			//less than 1
+			$output = str_replace( '%', number_format_i18n( $number ), $singular );
+		}
+
+		return $output;
+	}
+
+
 }

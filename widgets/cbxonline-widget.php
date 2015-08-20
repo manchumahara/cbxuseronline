@@ -112,7 +112,10 @@ class CBXOnlineWidget extends WP_Widget {
 
 
 		ob_start();
-
+/*
+		echo '<pre>';
+		print_r($instance);
+		echo '</pre>';*/
 
 
 		$fields = array(
@@ -124,14 +127,15 @@ class CBXOnlineWidget extends WP_Widget {
 			'page'              => 0, //show count for this page
 			'mobile'            => 1, //show user mobile or desktop login information
 			'memberlist'        => 1, //show member list
-			'mostuseronline'    => 1 //most user online date and count
+			'mostuseronline'    => 1, //most user online date and count
+			'linkusername'		=> 1  //link author page
 		);
 
 		foreach($fields as $field => $val){
 
 			if ( isset($instance[$field]) )
 			{
-				$instance[$field] = intval( $instance[$field] );
+				$instance[$field] = intval($instance[$field]);
 			}
 			else{
 				$instance[$field] = $val;
@@ -140,12 +144,19 @@ class CBXOnlineWidget extends WP_Widget {
 		}
 
 
+		$instance = apply_filters('cbxuseronline_widget_widget', $instance, $fields);
 
 
 
-		$instance['page'] = ($instance['page'])? $_SERVER['REQUEST_URI']: '';
 
-		echo  CBXUseronlineHelper::cbxuseronline_display($instance);
+		$instance['page'] = ($instance['page'])? sanitize_text_field($_SERVER['REQUEST_URI']): '';
+		$scope = 'widget';
+
+		/*echo '<pre>';
+		print_r($instance);
+		echo '</pre>';*/
+
+		echo  CBXUseronlineHelper::cbxuseronline_display($instance, $scope);
 
 
 
@@ -186,30 +197,29 @@ class CBXOnlineWidget extends WP_Widget {
 			'page'              => 0, //show count for this page
 			'mobile'            => 1, //show user mobile or desktop login information
 			'memberlist'        => 1, //show member list
-			'mostuseronline'    => 1 //most user online date and count
+			'mostuseronline'    => 1, //most user online date and count
+			'linkusername'		=> 1  //link author page
 		);
 
 		$instance['title']              = esc_attr( $new_instance['title'] );
+
+
 		foreach($fields as $field => $val){
+
+
 
 			if ( isset($new_instance[$field]) )
 			{
-				$instance[$field] = 1;
+				$instance[$field] = 1; //either te
 			}
 			else{
 				$instance[$field] = 0;
 			}
 
 		}
-		/*
-		$instance['count']              = intval( $new_instance['count'] );
-		$instance['count_individual']   = intval( $new_instance['count_individual'] );
-		$instance['member_count']       = intval( $new_instance['member_count'] );
-		$instance['guest_count']        = intval( $new_instance['guest_count'] );
-		$instance['bot_count']          = intval( $new_instance['bot_count'] );
-		$instance['page']               = intval( $new_instance['page'] );
-		$instance['mobile']             = intval( $new_instance['mobile'] );
-		*/
+
+		$instance = apply_filters('cbxuseronline_widget_update', $instance, $new_instance);
+
 
 
 		return $instance;
@@ -223,22 +233,28 @@ class CBXOnlineWidget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
+		$fields = array(
+			'title'             => __( 'CBX Useronline', $this->get_widget_slug() ),
+			'count'             => 1, //show user count
+			'count_individual'  => 1, //show individual count as per user type  member, guest and bot
+			'member_count'      => 1, //show member user type count
+			'guest_count'       => 1, //show guest user type count
+			'bot_count'         => 1, //show bot user type count
+			'page'              => 0, //show count for this page
+			'mobile'            => 1, //show user mobile or desktop login information
+			'memberlist'        => 1, //show member list
+			'mostuseronline'    => 1, //most user online date and count
+			'linkusername'		=> 1  //link author page
+		);
+
+		$fields = apply_filters('cbxuseronline_widget_form_fields', $fields);
 
 		$instance = wp_parse_args(
 			(array) $instance,
-			array(
-				'title'             => __( 'CBX Useronline', $this->get_widget_slug() ),
-				'count'             => 1, //show user count
-				'count_individual'  => 1, //show individual count as per user type  member, guest and bot
-				'member_count'      => 1, //show member user type count
-				'guest_count'       => 1, //show guest user type count
-				'bot_count'         => 1, //show bot user type count
-				'page'              => 0, //show count for this page
-				'mobile'            => 1, //show user mobile or desktop login information
-				'memberlist'        => 1, //show member list
-				'mostuseronline'    => 1 //most user online date and count
-			)
+			$fields
 		);
+
+		//$instance = apply_filters('cbxuseronline_widget_form', $instance, $fields);
 
 		extract( $instance, EXTR_SKIP );
 
